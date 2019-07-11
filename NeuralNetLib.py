@@ -8,6 +8,7 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
 
 
+
 """ helper functions """
 def loadimg(fn, scale=4):
     try:
@@ -19,6 +20,7 @@ def loadimg(fn, scale=4):
     img = img.resize((w//scale, h//scale), Image.ANTIALIAS)
     return np.array(img)/255
 
+
 def saveimg(img, filename):
     img = 255*np.copy(img)
     if len(np.shape(img)) > 2 and np.shape(img)[2] == 1:
@@ -26,6 +28,7 @@ def saveimg(img, filename):
     img = scipy.misc.toimage(img, cmin=0, cmax=255)
     scipy.misc.imsave(filename, img)
 
+    
 """ neural network layers """
 def conv(h, n=64):
     h = tf.contrib.layers.convolution2d(h, n, kernel_size=3, stride=1,
