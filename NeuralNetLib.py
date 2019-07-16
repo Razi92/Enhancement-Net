@@ -57,3 +57,5 @@ def NN(name, layers):
         for layer in layers[1:]:
             h = layer[0](h, *layer[1:])
     return h
+
+
